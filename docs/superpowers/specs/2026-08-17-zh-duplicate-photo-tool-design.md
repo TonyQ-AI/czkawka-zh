@@ -2,7 +2,7 @@
 
 - 日期：2026-08-17
 - 状态：已获用户批准并完成实现（按 spec-kit 流程，见 `specs/001-duplicate-photo-tool/`；实现细节以该处为准）
-- 项目位置：`E:\AiDatas\projects\czkawka-custom`（fork 自 qarmin/czkawka 最新版）
+- 项目位置：`项目根目录`（fork 自 qarmin/czkawka 最新版）
 
 ## 1. 背景与目标
 
@@ -136,7 +136,7 @@ clarity_score(entry) = (width * height) * 1000 + (size / 1024)
 - 编译命令：`cargo build --release -p krokiet`（krokiet 为 GUI 入口，依赖 czkawka_core）
 - 首次编译预计 20-40 分钟（拉取数百 Rust 依赖，走本机代理 7897）
 - 产物：Windows 可执行 exe（`target/release/krokiet.exe`）
-- 交付：源码 + 可执行文件，位于 `E:\AiDatas\projects\czkawka-custom`
+- 交付：源码 + 可执行文件，位于 `项目根目录`
 
 ## 7. 明确不做（YAGNI）
 

@@ -46,9 +46,9 @@ mod tests {
     #[test]
     fn higher_resolution_ranks_first() {
         let mut group = vec![
-            entry(500, 400, 200_000, "C:\\photos\\small.jpg"),
-            entry(1000, 800, 100_000, "C:\\photos\\big.jpg"),
-            entry(800, 600, 150_000, "C:\\photos\\mid.jpg"),
+            entry(500, 400, 200_000, "photos/small.jpg"),
+            entry(1000, 800, 100_000, "photos/big.jpg"),
+            entry(800, 600, 150_000, "photos/mid.jpg"),
         ];
         rank_group_by_clarity(&mut group);
         assert_eq!(group[0].width, 1000);
@@ -59,29 +59,29 @@ mod tests {
 
     #[test]
     fn same_resolution_prefers_larger_file() {
-        let mut group = vec![entry(800, 600, 100_000, "C:\\photos\\a.jpg"), entry(800, 600, 300_000, "C:\\photos\\b.jpg")];
+        let mut group = vec![entry(800, 600, 100_000, "photos/a.jpg"), entry(800, 600, 300_000, "photos/b.jpg")];
         rank_group_by_clarity(&mut group);
         assert_eq!(group[0].size, 300_000);
     }
 
     #[test]
     fn zero_dimensions_rank_last() {
-        let mut group = vec![entry(0, 0, 50_000, "C:\\photos\\broken.png"), entry(800, 600, 120_000, "C:\\photos\\good.jpg")];
+        let mut group = vec![entry(0, 0, 50_000, "photos/broken.png"), entry(800, 600, 120_000, "photos/good.jpg")];
         rank_group_by_clarity(&mut group);
-        assert_eq!(group[0].path.to_string_lossy(), "C:\\photos\\good.jpg");
-        assert_eq!(group[1].path.to_string_lossy(), "C:\\photos\\broken.png");
+        assert_eq!(group[0].path.to_string_lossy(), "photos/good.jpg");
+        assert_eq!(group[1].path.to_string_lossy(), "photos/broken.png");
     }
 
     #[test]
     fn keep_index_skips_zero_dimensions() {
-        let group = vec![entry(0, 0, 50_000, "C:\\photos\\broken.png"), entry(800, 600, 120_000, "C:\\photos\\good.jpg")];
+        let group = vec![entry(0, 0, 50_000, "photos/broken.png"), entry(800, 600, 120_000, "photos/good.jpg")];
         let keep = group_keep_index(&group);
         assert_eq!(keep, Some(1));
     }
 
     #[test]
     fn keep_index_none_when_all_zero_dimensions() {
-        let group = vec![entry(0, 0, 50_000, "C:\\photos\\a.png"), entry(0, 0, 80_000, "C:\\photos\\b.png")];
+        let group = vec![entry(0, 0, 50_000, "photos/a.png"), entry(0, 0, 80_000, "photos/b.png")];
         assert_eq!(group_keep_index(&group), None);
     }
 
@@ -93,15 +93,15 @@ mod tests {
 
     #[test]
     fn tie_breaks_by_path_deterministically() {
-        let mut group = vec![entry(800, 600, 200_000, "C:\\photos\\b.jpg"), entry(800, 600, 200_000, "C:\\photos\\a.jpg")];
+        let mut group = vec![entry(800, 600, 200_000, "photos/b.jpg"), entry(800, 600, 200_000, "photos/a.jpg")];
         rank_group_by_clarity(&mut group);
-        assert_eq!(group[0].path.to_string_lossy(), "C:\\photos\\a.jpg");
-        assert_eq!(group[1].path.to_string_lossy(), "C:\\photos\\b.jpg");
+        assert_eq!(group[0].path.to_string_lossy(), "photos/a.jpg");
+        assert_eq!(group[1].path.to_string_lossy(), "photos/b.jpg");
     }
 
     #[test]
     fn clarity_score_zero_for_zero_dimensions() {
-        assert_eq!(clarity_score(&entry(0, 0, 99_999, "C:\\photos\\x.png")), 0);
-        assert_eq!(clarity_score(&entry(100, 0, 99_999, "C:\\photos\\y.png")), 0);
+        assert_eq!(clarity_score(&entry(0, 0, 99_999, "photos/x.png")), 0);
+        assert_eq!(clarity_score(&entry(100, 0, 99_999, "photos/y.png")), 0);
     }
 }

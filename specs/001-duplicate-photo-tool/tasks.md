@@ -31,7 +31,7 @@ description: "Task list for 中文重复照片筛查工具 feature implementatio
 
 **Purpose**: 仓库基线确认与功能分支
 
-- [x] T001 确认工作目录 `E:\AiDatas\projects\czkawka-custom` 为 git 仓库，当前 HEAD 干净
+- [x] T001 确认工作目录 `项目根目录` 为 git 仓库，当前 HEAD 干净
 - [x] T002 创建功能分支 `001-duplicate-photo-tool`（从当前 master/main 切出）
 - [x] T003 验证本机构建基线：`cargo metadata --no-deps` 成功（Rust 1.97.1 满足 workspace 要求 1.94.1）
 - [x] T004 [P] 确认代理可拉取 crates（`curl -x http://127.0.0.1:7897 https://crates.io` 返回非超时）

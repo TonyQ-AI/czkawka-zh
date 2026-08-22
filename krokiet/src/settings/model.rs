@@ -22,7 +22,7 @@ use serde::{Deserialize, Serialize};
 use crate::connect_translation::find_the_closest_language_idx_to_system;
 use crate::settings::combo_box::StringComboBoxItem;
 
-pub const DEFAULT_MINIMUM_SIZE_KB: i32 = 16;
+pub const DEFAULT_MINIMUM_SIZE_KB: i32 = 0;
 pub const DEFAULT_MAXIMUM_SIZE_KB: i32 = i32::MAX;
 pub const DEFAULT_MINIMUM_CACHE_SIZE: i32 = 256;
 pub const DEFAULT_MINIMUM_PREHASH_CACHE_SIZE: i32 = 256;
